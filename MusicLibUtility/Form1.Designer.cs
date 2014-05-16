@@ -1,4 +1,24 @@
-﻿namespace MusicLibUtility
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.ComponentModel;
+using System.Data;
+using System.Reflection;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Text.RegularExpressions;
+using TagLib;
+using System.Xml.Serialization;
+using iTunesLib;
+using System.Xml;
+using System.Xml.Linq;
+using System.Diagnostics;
+
+namespace MusicLibUtility
 {
     
     partial class Form1
@@ -1165,7 +1185,7 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.PictureBox pictureBox14;
         private System.Windows.Forms.PictureBox pictureBox15;
-        private System.Windows.Forms.Button button5;
+        public System.Windows.Forms.Button button5;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.PictureBox pictureBox16;
         private System.Windows.Forms.PictureBox pictureBox17;

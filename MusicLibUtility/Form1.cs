@@ -935,7 +935,7 @@ namespace MusicLibUtility
             if (checkBox7.Checked)
             { extensions.Add("*.flac"); }
             if (checkBox7.Checked == false)
-            { extensions.Remove("*.false"); }
+            { extensions.Remove("*.flac"); }
         }
 
         private void checkBox8_CheckedChanged(object sender, EventArgs e)
