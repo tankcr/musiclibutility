@@ -41,8 +41,6 @@
             this.pictureBox16 = new System.Windows.Forms.PictureBox();
             this.button5 = new System.Windows.Forms.Button();
             this.pictureBox17 = new System.Windows.Forms.PictureBox();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -107,6 +105,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label14 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.pictureBox20 = new System.Windows.Forms.PictureBox();
             this.button10 = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
@@ -145,6 +144,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox20)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MLDataset)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BadMediaDataset)).BeginInit();
@@ -197,8 +197,6 @@
             this.panel5.Controls.Add(this.pictureBox16);
             this.panel5.Controls.Add(this.button5);
             this.panel5.Controls.Add(this.pictureBox17);
-            this.panel5.Controls.Add(this.button6);
-            this.panel5.Controls.Add(this.button7);
             this.panel5.Location = new System.Drawing.Point(6, 19);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(148, 65);
@@ -262,24 +260,6 @@
             this.pictureBox17.Size = new System.Drawing.Size(144, 10);
             this.pictureBox17.TabIndex = 17;
             this.pictureBox17.TabStop = false;
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(183, 62);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 8;
-            this.button6.Text = "Halt";
-            this.button6.UseVisualStyleBackColor = true;
-            // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(89, 62);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(75, 23);
-            this.button7.TabIndex = 7;
-            this.button7.Text = "Scan";
-            this.button7.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
@@ -945,6 +925,7 @@
             // panel3
             // 
             this.panel3.BackgroundImage = global::MusicLibUtility.Properties.Resources.wrkbkg;
+            this.panel3.Controls.Add(this.pictureBox20);
             this.panel3.Controls.Add(this.button10);
             this.panel3.Controls.Add(this.label13);
             this.panel3.Controls.Add(this.groupBox1);
@@ -954,6 +935,19 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(550, 135);
             this.panel3.TabIndex = 26;
+            // 
+            // pictureBox20
+            // 
+            this.pictureBox20.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox20.BackgroundImage = global::MusicLibUtility.Properties.Resources.popout;
+            this.pictureBox20.Location = new System.Drawing.Point(511, 6);
+            this.pictureBox20.MaximumSize = new System.Drawing.Size(32, 32);
+            this.pictureBox20.MinimumSize = new System.Drawing.Size(32, 32);
+            this.pictureBox20.Name = "pictureBox20";
+            this.pictureBox20.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox20.TabIndex = 29;
+            this.pictureBox20.TabStop = false;
+            this.pictureBox20.Click += new System.EventHandler(this.pictureBox20_Click);
             // 
             // button10
             // 
@@ -986,7 +980,7 @@
             this.pictureBox12.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox12.BackgroundImage = global::MusicLibUtility.Properties.Resources.artcover1;
             this.pictureBox12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox12.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox12.Location = new System.Drawing.Point(0, -1);
             this.pictureBox12.MaximumSize = new System.Drawing.Size(140, 140);
             this.pictureBox12.MinimumSize = new System.Drawing.Size(140, 140);
             this.pictureBox12.Name = "pictureBox12";
@@ -1106,6 +1100,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox20)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MLDataset)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BadMediaDataset)).EndInit();
@@ -1174,8 +1169,6 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.PictureBox pictureBox16;
         private System.Windows.Forms.PictureBox pictureBox17;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button button8;
@@ -1203,6 +1196,7 @@
         private System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.PictureBox pictureBox13;
+        private System.Windows.Forms.PictureBox pictureBox20;
     }
 }
 

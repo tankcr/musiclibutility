@@ -950,5 +950,16 @@ namespace MusicLibUtility
         {
 
         }
+
+        private void pictureBox20_Click(object sender, EventArgs e)
+        {
+            Form form2 = new Form2
+            {
+                Text = "Media Player",
+                Location = new Point(Right, Top),
+                StartPosition = FormStartPosition.Manual,
+            };
+            form2.Show();
+        }
     }
 }
