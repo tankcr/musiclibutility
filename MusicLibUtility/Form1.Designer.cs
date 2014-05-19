@@ -960,7 +960,8 @@ namespace MusicLibUtility
             // 
             this.pictureBox20.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox20.BackgroundImage = global::MusicLibUtility.Properties.Resources.popout;
-            this.pictureBox20.Location = new System.Drawing.Point(511, 6);
+            this.pictureBox20.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBox20.Location = new System.Drawing.Point(508, 6);
             this.pictureBox20.MaximumSize = new System.Drawing.Size(32, 32);
             this.pictureBox20.MinimumSize = new System.Drawing.Size(32, 32);
             this.pictureBox20.Name = "pictureBox20";
