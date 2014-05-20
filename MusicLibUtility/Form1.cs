@@ -601,7 +601,7 @@ namespace MusicLibUtility
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            backgroundWorker8.RunWorkerAsync();
         }
 
         private void label13_Click_1(object sender, EventArgs e)
@@ -816,7 +816,7 @@ namespace MusicLibUtility
                 try { badTable.Rows.Clear(); }
                 catch { }
 
-                
+
                 if (comboBox2.SelectedItem.ToString() == "iTunes Playlists")
                 {
                     comboBox1.Enabled = true;
@@ -837,12 +837,12 @@ namespace MusicLibUtility
                     try
                     {
                         DataTable MLTable = MLDataset.Tables[0];
-                        int rowcount = MLTable.Rows.Count;;
+                        int rowcount = MLTable.Rows.Count; ;
                         lbl_numsongs.Text = rowcount.ToString();
                         dataGridView1.DataSource = MLTable;
                     }
-                    catch 
-                    { 
+                    catch
+                    {
                         comboBox1.Text = "Library File Inaccessible";
                         dataTable1.Rows.Clear();
                     }
@@ -850,21 +850,39 @@ namespace MusicLibUtility
                 }
                 else if (comboBox2.SelectedItem.ToString() == "iTunes Database Backup")
                 {
-                    comboBox1.Text = "Library File Inaccessible";
                     comboBox1.Enabled = false;
+                    comboBox1.Text = "iTunes Library";
                     lbl_numsongs.Text = null;
-                    MLTable = null;
-                    dataGridView1.DataSource = MLTable;
+                    try
+                    {
+                        MLDataset.Clear();
+                        this.MLDataset.ReadXml(this.label4.Text + "\\ItunesLib.xml");
+                    }
+                    catch { }
+                    try
+                    {
+                        DataTable MLTable = MLDataset.Tables[0];
+                        int rowcount = MLTable.Rows.Count; ;
+                        lbl_numsongs.Text = rowcount.ToString();
+                        dataGridView1.DataSource = MLTable;
+                    }
+                    catch
+                    {
+                        comboBox1.Text = "Library File Inaccessible";
+                        dataTable1.Rows.Clear();
+                    }
+                    comboBox1.Enabled = false;
                 }
+
                 else if (comboBox2.SelectedItem.ToString() == "Bad Media Files")
                 {
                     comboBox1.Enabled = false;
                     lbl_numsongs.Text = null;
                     try
-                    { 
+                    {
                         comboBox1.Text = "Corrupt Media Files";
                         BadMediaDataset.Clear();
-                        this.BadMediaDataset.ReadXml(this.label4.Text + "\\badfiles.xml"); 
+                        this.BadMediaDataset.ReadXml(this.label4.Text + "\\badfiles.xml");
                     }
                     catch { }
                     try
@@ -872,16 +890,15 @@ namespace MusicLibUtility
                         DataTable badTable = BadMediaDataset.Tables[0];
                         dataGridView1.DataSource = badTable;
                     }
-                    catch 
-                    { 
+                    catch
+                    {
                         comboBox1.Text = "Library File Inaccessible";
                         dataTable1.Rows.Clear();
                     }
                     comboBox1.Enabled = false;
-                    }
-             }
+                }
+            }
         }
-
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox1.Checked)
@@ -960,6 +977,85 @@ namespace MusicLibUtility
                 StartPosition = FormStartPosition.Manual,
             };
             form2.Show();
+        }
+
+        private void backgroundWorker8_DoWork(object sender, DoWorkEventArgs e)
+        {
+            {
+                XDocument doc = new XDocument();
+                XElement songsElement = new XElement("Songs");
+                IITPlaylist playlist = itunes.LibraryPlaylist;
+                IITTrackCollection tracks = playlist.Tracks;
+                int numtracks = tracks.Count;
+                char[] delimiters = new char[] { ' ', '\\', '/' };
+                for (int currtrackindex = 1; currtrackindex <= numtracks; currtrackindex++)
+                {
+                    IITTrack currTrack = tracks[currtrackindex];
+                    string songPath;
+                    try 
+                    { 
+                        IITFileOrCDTrack file = (IITFileOrCDTrack)currTrack;
+                        songPath = file.Location.ToString();
+                    }
+                    catch { songPath = "Missing"; }
+                    XElement songElement = new XElement("Song");
+                     string songTitle;
+                    try { songTitle = currTrack.Name; }
+                    catch { songTitle = "Missing"; }
+                    int songTNint;
+                    try { songTNint = (currTrack.TrackNumber); }
+                    catch { songTNint = 00; }
+                    string songTN = songTNint.ToString();
+                    string songArtist;
+                    try { songArtist = (currTrack.Artist); }
+                    catch { songArtist = "Missing"; }
+                    string songGenre;
+                    List<string> songGenres = new List<string>();
+                    try
+                    {
+                        string G = currTrack.Genre.ToString();
+                        string[] Genres = G.Split(delimiters);
+                        foreach (string Genre in Genres)
+                        { songGenres.Add(Genre); }
+                    }
+                    catch { songGenre = "Missing"; };
+                    if (songGenres.Count > 1) { songGenre = (songGenres[0] + "/" + songGenres[1]); }
+                    else { try { songGenre = songGenres[0]; } catch { songGenre = "Missing"; } }
+                    //songGenre = string.Join(songGenres.Select(songGenre=>songGenre+"/"));
+                    try
+                    {
+                        songArtist = Regex.Replace(songArtist, @"[^\u0020-\u007E]", string.Empty);
+                    }
+                    catch { };
+                    //songlist.Add("Adding "+songTitle+", Artist "+songArtist+", at path "+songPath+" to DirLib file.");
+                    XElement titleElement = new XElement("Title", songTitle);
+                    XElement tnElement = new XElement("Track", songTN);
+                    XElement pathElement = new XElement("Path", songPath);
+                    XElement artistElement = new XElement("Artist", songArtist);
+                    XElement genreElement = new XElement("Genre", songGenre);
+                    songElement.Add(titleElement);
+                    songElement.Add(tnElement);
+                    songElement.Add(pathElement);
+                    songElement.Add(artistElement);
+                    songElement.Add(genreElement);
+                    songsElement.Add(songElement);
+                }
+
+                //pictureBox5.Image = null;
+                //pictureBox6.Image = Properties.Resources.music16;
+                //label11.Text = badfiles.Count + " Corrupt Files Found";
+                //pictureBox8.Image = MusicLibUtility.Properties.Resources.scanning;
+                //System.IO.File.WriteAllLines(@libraryPath+"\\WriteLines.txt", songlist);    
+                doc.Add(songsElement);
+                doc.Save(label4.Text + "\\ItunesLib.xml");
+            }
+        }
+
+        private void backgroundWorker9_DoWork(object sender, DoWorkEventArgs e)
+        {
+            
+            do { Thread.Sleep(800); }
+            while (backgroundWorker8.IsBusy);
         }
     }
 }

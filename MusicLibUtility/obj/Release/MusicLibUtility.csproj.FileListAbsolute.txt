@@ -29,3 +29,4 @@ C:\Users\kriroy\Documents\GitHub\musiclibutility\MusicLibUtility\obj\Release\Mus
 C:\Users\kriroy\Documents\GitHub\musiclibutility\MusicLibUtility\obj\Release\MusicLibUtility.Form2.resources
 C:\Users\kriroy\Documents\GitHub\musiclibutility\MusicLibUtility\obj\Release\MusicLibUtility.Properties.Resources.resources
 C:\Users\kriroy\Documents\GitHub\musiclibutility\MusicLibUtility\obj\Release\MusicLibUtility.csproj.GenerateResource.Cache
+C:\Users\kriroy\Documents\GitHub\musiclibutility\MusicLibUtility\obj\Release\MusicLibUtility.csprojResolveAssemblyReference.cache

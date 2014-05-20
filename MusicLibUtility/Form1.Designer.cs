@@ -135,6 +135,8 @@ namespace MusicLibUtility
             this.BadMediaDataset = new System.Data.DataSet();
             this.panel7 = new System.Windows.Forms.Panel();
             this.pictureBox13 = new System.Windows.Forms.PictureBox();
+            this.backgroundWorker8 = new System.ComponentModel.BackgroundWorker();
+            this.backgroundWorker9 = new System.ComponentModel.BackgroundWorker();
             this.groupBox1.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).BeginInit();
@@ -1063,6 +1065,14 @@ namespace MusicLibUtility
             this.pictureBox13.TabIndex = 30;
             this.pictureBox13.TabStop = false;
             // 
+            // backgroundWorker8
+            // 
+            this.backgroundWorker8.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker8_DoWork);
+            // 
+            // backgroundWorker9
+            // 
+            this.backgroundWorker9.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker9_DoWork);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1218,6 +1228,8 @@ namespace MusicLibUtility
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.PictureBox pictureBox13;
         private System.Windows.Forms.PictureBox pictureBox20;
+        private BackgroundWorker backgroundWorker8;
+        private BackgroundWorker backgroundWorker9;
     }
 }
 
