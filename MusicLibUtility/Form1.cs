@@ -21,18 +21,6 @@ using System.Diagnostics;
 namespace MusicLibUtility
 {
     
-    
-private class ExtensionInfo 
-    {
-    public string Extension { get; private set; }
-    public string Description { get; private set; }
-    public bool IsIncluded { get; set; }
-    public ExtensionInfo(string extension, string description) 
-        {
-            Extension = extension;
-            Description = description;
-        }
-    }
 
     public partial class Form1 : Form
     {
@@ -53,20 +41,7 @@ private class ExtensionInfo
         string currDirPath;
         DataTable MLTable;
         DataTable badTable;
-
-        private Dictionary<string, ExtensionInfo> extensionInfo = new Dictionary<string, ExtensionInfo> 
-        {
-            {".mp3",new ExtensionInfo(".mp3", "MP3 Audio")},
-            {".m4a",new ExtensionInfo(".m4a", "iTunes AAC Audio")},
-            {".m4b",new ExtensionInfo(".m4b", "iTunes Audio Book" )},
-            {".m4v",new ExtensionInfo(".m4v", "iTunes Video" )},
-            {".m4p",new ExtensionInfo(".m4p", "iTunes Protected Audio" )},
-            {".flac",new ExtensionInfo(".flac", "Lossless Flac Audio")},
-            {".wav",new ExtensionInfo(".wav", "Windows Audio/Video" )},
-            {".mp4",new ExtensionInfo(".mp4", "Mp4 Audio/Video")}
-        };
-
-
+        List<string> extensions = new List<string>();
         public Form1()
         {
             InitializeComponent();
@@ -272,39 +247,30 @@ private class ExtensionInfo
                 string filepath = label4.Text;
                 DirectoryInfo rootDir = new DirectoryInfo(filepath);
 
-                foreach (var file in rootDir.GetFiles())
+                foreach (string ext in extensions)
                 {
-                    ExtensionInfo info;
-                    if (extensionInfo.TryGetValue(file.Extension, out info) && info.IsIncluded)
+                    try
                     {
-                        label5.Text = info.Description;
+                        filesacc = rootDir.GetFiles(ext);
+                        if (ext == "*.mp3")
+                        { label5.Text = "MP3 Audio"; }
+                        else if (ext == "*.m4a")
+                        { label5.Text = "iTunes AAC Audio"; }
+                        else if (ext == "*.m4b")
+                        { label5.Text = "iTunes Audio Book"; }
+                        else if (ext == "*.m4v")
+                        { label5.Text = "iTunes Video"; }
+                        else if (ext == "*.m4p")
+                        { label5.Text = "iTunes Protected Audio"; }
+                        else if (ext == "*.flac")
+                        { label5.Text = "Lossless Flac Audio"; }
+                        else if (ext == "*.wav")
+                        { label5.Text = "Windows Audio"; }
+                        else if (ext == "*.mp4")
+                        { label5.Text = "Mp4 Audio/Video"; }
                     }
-                }
-
-//                foreach (string ext in extensions)
-//                {
-//                    try
-//                    {
-//                        filesacc = rootDir.GetFiles(ext);
-//                        if (ext == "*.mp3")
-//                        { label5.Text = "MP3 Audio"; }
-//                        else if (ext == "*.m4a")
-//                        { label5.Text = "iTunes AAC Audio"; }
-//                        else if (ext == "*.m4b")
-//                        { label5.Text = "iTunes Audio Book"; }
-//                        else if (ext == "*.m4v")
-//                        { label5.Text = "iTunes Video"; }
-//                        else if (ext == "*.m4p")
-//                        { label5.Text = "iTunes Protected Audio"; }
-//                        else if (ext == "*.flac")
-//                        { label5.Text = "Lossless Flac Audio"; }
- //                       else if (ext == "*.wav")
- //                       { label5.Text = "Windows Audio"; }
-//                        else if (ext == "*.mp4")
-//                        { label5.Text = "Mp4 Audio/Video"; }
-//                    }
-//                    catch (UnauthorizedAccessException)
-//                    { }
+                    catch (UnauthorizedAccessException)
+                    { }
                     if (filesacc != null)
                     {
                         foreach (FileInfo fi in filesacc)
@@ -331,7 +297,7 @@ private class ExtensionInfo
                     }
 
                 }
-
+            }
             this.pictureBox3.Image = null;
             Int32 filecount = files.Count;
             label7.Text = "Directories";
@@ -935,82 +901,66 @@ private class ExtensionInfo
         }
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            var checkBox = sender as CheckBox;
-            if (checkBox == null)
-            {
-                return;
-            }
-            extensionInfo[".mp3"].IsIncluded = checkBox.Checked;
+            if (checkBox1.Checked)
+            { extensions.Add("*.mp3"); }
+            if (checkBox1.Checked == false)
+            { extensions.Remove("*.mp3"); }
         }
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
-            var checkBox = sender as CheckBox;
-            if (checkBox == null)
-            {
-                return;
-            }
-            extensionInfo[".mp4"].IsIncluded = checkBox.Checked;
+            if (checkBox2.Checked)
+            { extensions.Add("*.mp4"); }
+            if (checkBox2.Checked == false)
+            { extensions.Remove("*.mp4"); }
         }
 
         private void checkBox3_CheckedChanged(object sender, EventArgs e)
         {
-            var checkBox = sender as CheckBox;
-            if (checkBox == null)
-            {
-                return;
-            }
-            extensionInfo[".m4a"].IsIncluded = checkBox.Checked;
+            if (checkBox3.Checked)
+            { extensions.Add("*.m4a"); }
+            if (checkBox3.Checked == false)
+            { extensions.Remove("*.m4a"); }
         }
 
         private void checkBox4_CheckedChanged(object sender, EventArgs e)
         {
-            var checkBox = sender as CheckBox;
-            if (checkBox == null)
-            {
-                return;
-            }
-            extensionInfo[".m4v"].IsIncluded = checkBox.Checked;
+            if (checkBox4.Checked)
+            { extensions.Add("*.m4v"); }
+            if (checkBox4.Checked == false)
+            { extensions.Remove("*.m4v"); }
         }
 
         private void checkBox5_CheckedChanged(object sender, EventArgs e)
         {
-            var checkBox = sender as CheckBox;
-            if (checkBox == null)
-            {
-                return;
-            }
-            extensionInfo[".m4p"].IsIncluded = checkBox.Checked;
+            if (checkBox5.Checked)
+            { extensions.Add("*.m4p"); }
+            if (checkBox5.Checked == false)
+            { extensions.Remove("*.m4p"); }
         }
 
         private void checkBox6_CheckedChanged(object sender, EventArgs e)
         {
-            var checkBox = sender as CheckBox;
-            if (checkBox == null)
-            {
-                return;
-            }
-            extensionInfo[".m4b"].IsIncluded = checkBox.Checked;
+            if (checkBox6.Checked)
+            { extensions.Add("*.m4b"); }
+            if (checkBox6.Checked == false)
+            { extensions.Remove("*.m4b"); }
         }
 
         private void checkBox7_CheckedChanged(object sender, EventArgs e)
         {
-            var checkBox = sender as CheckBox;
-            if (checkBox == null)
-            {
-                return;
-            }
-            extensionInfo[".flac"].IsIncluded = checkBox.Checked;
+            if (checkBox7.Checked)
+            { extensions.Add("*.flac"); }
+            if (checkBox7.Checked == false)
+            { extensions.Remove("*.flac"); }
         }
 
         private void checkBox8_CheckedChanged(object sender, EventArgs e)
         {
-            var checkBox = sender as CheckBox;
-            if (checkBox == null)
-            {
-                return;
-            }
-            extensionInfo[".wav"].IsIncluded = checkBox.Checked;
+            if (checkBox8.Checked)
+            { extensions.Add("*.wav"); }
+            if (checkBox8.Checked == false)
+            { extensions.Remove("*.wav"); }
         }
 
         private void panel7_Paint(object sender, PaintEventArgs e)

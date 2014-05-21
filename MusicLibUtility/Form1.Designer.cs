@@ -252,15 +252,15 @@ namespace MusicLibUtility
             // 
             // pictureBox16
             // 
-            //this.pictureBox16.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox16.BackgroundImage")));
-            //this.pictureBox16.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            //this.pictureBox16.Location = new System.Drawing.Point(0, -2);
-            //this.pictureBox16.MaximumSize = new System.Drawing.Size(5, 0);
-            //this.pictureBox16.MinimumSize = new System.Drawing.Size(5, 100);
-            //this.pictureBox16.Name = "pictureBox16";
-            //this.pictureBox16.Size = new System.Drawing.Size(5, 100);
-            //this.pictureBox16.TabIndex = 9;
-            //this.pictureBox16.TabStop = false;
+            this.pictureBox16.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox16.BackgroundImage")));
+            this.pictureBox16.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox16.Location = new System.Drawing.Point(0, -2);
+            this.pictureBox16.MaximumSize = new System.Drawing.Size(5, 0);
+            this.pictureBox16.MinimumSize = new System.Drawing.Size(5, 100);
+            this.pictureBox16.Name = "pictureBox16";
+            this.pictureBox16.Size = new System.Drawing.Size(5, 100);
+            this.pictureBox16.TabIndex = 9;
+            this.pictureBox16.TabStop = false;
             // 
             // button5
             // 
