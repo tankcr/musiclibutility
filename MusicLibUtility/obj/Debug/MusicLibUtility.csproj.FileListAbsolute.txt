@@ -29,3 +29,9 @@ C:\Users\kriroy\Google Drive\IS Stuff\Projects\MusicLibUtility\MusicLibUtility\o
 C:\Users\kriroy\Google Drive\IS Stuff\Projects\MusicLibUtility\MusicLibUtility\bin\Debug\Microsoft.QualityTools.Testing.Fakes.dll
 C:\Users\kriroy\Google Drive\IS Stuff\Projects\MusicLibUtility\MusicLibUtility\bin\Debug\taglib-sharp.dll
 C:\Users\kriroy\Google Drive\IS Stuff\Projects\MusicLibUtility\MusicLibUtility\obj\Debug\MusicLibUtility.csprojResolveAssemblyReference.cache
+C:\Users\kriroy\Documents\GitHub\musiclibutility\MusicLibUtility\bin\Debug\MusicLibUtility.exe.config
+C:\Users\kriroy\Documents\GitHub\musiclibutility\MusicLibUtility\obj\Debug\Interop.iTunesAdminLib.dll
+C:\Users\kriroy\Documents\GitHub\musiclibutility\MusicLibUtility\obj\Debug\Interop.iTunesLib.dll
+C:\Users\kriroy\Documents\GitHub\musiclibutility\MusicLibUtility\obj\Debug\MusicLibUtility.csproj.ResolveComReference.cache
+C:\Users\kriroy\Documents\GitHub\musiclibutility\MusicLibUtility\obj\Debug\MusicLibUtility.exe
+C:\Users\kriroy\Documents\GitHub\musiclibutility\MusicLibUtility\obj\Debug\MusicLibUtility.pdb
