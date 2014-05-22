@@ -233,7 +233,7 @@ namespace MusicLibUtility
             string[] allfiles = null;
             string[] Dirs = null;
             RecursiveFileSearch rfs = new RecursiveFileSearch();
-            rfs.FullDirList(rootDir,"*");
+            rfs.WalkDirectoryTree(rootDir);
 //            rfs.dirInfo;
             foreach (string s in rfs.log)
             {
@@ -257,22 +257,19 @@ namespace MusicLibUtility
             foreach (KeyValuePair<string, string> ext in extensions)
             {
                 System.IO.File.WriteAllText(@filepath + "\\testext.txt", ext.ToString());
-                foreach (FileInfo file in filelist)
+                
+                foreach(FileInfo file in filelist)
+
                 {
-                    FileInfo fi = file;
                     label8.Text = Path.GetFileName(file.FullName+file.Name);
-                    if (extensions.ContainsKey(fi.Extension))
+                    if (extensions.ContainsKey(file.Extension.ToString()))
                     {
-                        files.Add(fi.FullName.ToString()); label8.Text = fi.FullName;
+                        files.Add(file.FullName); 
+                        label8.Text = file.FullName;
+                        label7.Text = file.Directory.ToString();
+                        label5.Text = ext.Value;
                         System.IO.File.WriteAllText("@C:\test.txt", files.ToString());
                     }
-                }
-                foreach (string GFI in files)
-                {
-                    label7.Text = Path.GetDirectoryName(GFI);
-                    label8.Text = Path.GetFileName(GFI);
-                    label7.Text = "Directory";
-                    label8.Text = "File";
                 }
             }
             this.pictureBox3.Image = null;
@@ -360,7 +357,6 @@ namespace MusicLibUtility
         }
         private void backgroundWorker2_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-
             pictureBox5.Image = null;
             pictureBox6.Image = Properties.Resources.music16;
             backgroundWorker2.CancelAsync();
@@ -770,7 +766,7 @@ namespace MusicLibUtility
         Dictionary<string, string> extensions = new Dictionary<string, string>();     
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox1.Checked) extensions["*.mp3"] = "MP3 Audio"; else extensions.Remove("*.mp3");
+            if (checkBox1.Checked) extensions[".mp3"] = "MP3 Audio"; else extensions.Remove(".mp3");
         }
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
