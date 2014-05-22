@@ -45,4 +45,3 @@ C:\Users\kriroy\Documents\GitHub\musiclibutility\MusicLibUtility\obj\Debug\Music
 C:\Users\kriroy\Documents\GitHub\musiclibutility\MusicLibUtility\obj\Debug\MusicLibUtility.Form2.resources
 C:\Users\kriroy\Documents\GitHub\musiclibutility\MusicLibUtility\obj\Debug\MusicLibUtility.Properties.Resources.resources
 C:\Users\kriroy\Documents\GitHub\musiclibutility\MusicLibUtility\obj\Debug\MusicLibUtility.csproj.GenerateResource.Cache
-C:\Users\kriroy\Documents\GitHub\musiclibutility\MusicLibUtility\obj\Debug\MusicLibUtility.csprojResolveAssemblyReference.cache
