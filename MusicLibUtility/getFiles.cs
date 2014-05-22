@@ -11,18 +11,19 @@ namespace MusicLibUtility
 {
     public class RecursiveFileSearch
     {
-        public List<string> Files = new List<string>();
+        public List<FileInfo> Files = new List<FileInfo>();
         public System.Collections.Specialized.StringCollection log = new System.Collections.Specialized.StringCollection();
 
-        public FileInfo[] WalkDirectoryTree(System.IO.DirectoryInfo rootDir)
+        public List<FileInfo> WalkDirectoryTree(System.IO.DirectoryInfo rootDir)
         {
-            System.IO.FileInfo[] files = null;
+            List<FileInfo> files = null;
             System.IO.DirectoryInfo[] subDirs = null;
 
             // First, process all the files directly under this folder 
             try
             {
-                files = rootDir.GetFiles("*.*");
+                FileInfo[] currentFiles = rootDir.GetFiles("*.*");    
+                files.AddRange(currentFiles);
             }
             // This is thrown if even one of the files requires permissions greater 
             // than the application provides. 
@@ -48,14 +49,7 @@ namespace MusicLibUtility
                     // a try-catch block is required here to handle the case 
                     // where the file has been deleted since the call to TraverseTree().
                     Console.WriteLine(fi.FullName);
-                    try 
-                    { 
-                        string thefile = fi.FullName;
-                        Files.Add(thefile);
-                        return files;
-                    
-                    }
-                    catch(UnauthorizedAccessException){};
+                    Files.Add(fi);
                 }
 
                 // Now find all the subdirectories under this directory.
@@ -64,7 +58,7 @@ namespace MusicLibUtility
                 foreach (System.IO.DirectoryInfo dirInfo in subDirs)
                 {
                     // Resursive call for each subdirectory.
-                    WalkDirectoryTree(dirInfo);
+                    files.AddRange(WalkDirectoryTree(dirInfo));
                     
                 }
             }

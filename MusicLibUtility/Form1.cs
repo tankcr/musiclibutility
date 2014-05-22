@@ -235,19 +235,17 @@ namespace MusicLibUtility
             string[] Dirs = null;
             RecursiveFileSearch rfs = new RecursiveFileSearch();
             rfs.WalkDirectoryTree(rootDir);
-            Console.WriteLine("Files with restricted access:");
             foreach (string s in rfs.log)
             {
                 Console.WriteLine(s);
             }
             // Keep the console window open in debug mode.
-            List<string>filelist = rfs.Files;
+            List<FileInfo>filelist = rfs.Files;
 //            try
 //            { Dirs = Directory.GetDirectories(filepath); }
 //            catch (UnauthorizedAccessException) { }
 
 
-            System.IO.File.WriteAllLines(@filepath + "\\testfiles.txt", filelist);
 //            try
 //            {
 //                allfiles = Directory.GetFiles(rootDir.FullName, "*.*", SearchOption.AllDirectories);
@@ -259,10 +257,10 @@ namespace MusicLibUtility
             foreach (KeyValuePair<string, string> ext in extensions)
             {
                 System.IO.File.WriteAllText(@filepath + "\\testext.txt", ext.ToString());
-                foreach (string file in filelist)
+                foreach (FileInfo file in filelist)
                 {
-                    FileInfo fi = new FileInfo(file);
-                    label8.Text = Path.GetFileName(file);
+                    FileInfo fi = file;
+                    label8.Text = Path.GetFileName(file.FullName);
                     if (extensions.ContainsKey(fi.Extension))
                     {
                         files.Add(fi.FullName.ToString()); label8.Text = fi.FullName;
