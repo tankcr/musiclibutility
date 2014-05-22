@@ -256,20 +256,16 @@ namespace MusicLibUtility
 //           System.IO.File.WriteAllLines(@filepath + "\\testfiles.txt", allfiles);
             foreach (KeyValuePair<string, string> ext in extensions)
             {
-                System.IO.File.WriteAllText(@filepath + "\\testext.txt", ext.ToString());
-                
+                label5.Text = ext.Value;
                 foreach(FileInfo file in filelist)
-
                 {
-                    label8.Text = Path.GetFileName(file.FullName+file.Name);
+                    label7.Text = Path.GetFullPath(file.Directory.ToString());
                     if (extensions.ContainsKey(file.Extension.ToString()))
                     {
                         files.Add(file.FullName); 
-                        label8.Text = file.FullName;
-                        label7.Text = file.Directory.ToString();
-                        label5.Text = ext.Value;
-                        System.IO.File.WriteAllText("@C:\test.txt", files.ToString());
+                        label8.Text = file.Name;
                     }
+                    else { }
                 }
             }
             this.pictureBox3.Image = null;
