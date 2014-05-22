@@ -16,7 +16,7 @@ namespace MusicLibUtility
 
         public List<FileInfo> WalkDirectoryTree(System.IO.DirectoryInfo rootDir)
         {
-            List<FileInfo> files = null;
+            List<FileInfo> files = new List<FileInfo>();
             System.IO.DirectoryInfo[] subDirs = null;
 
             // First, process all the files directly under this folder 
