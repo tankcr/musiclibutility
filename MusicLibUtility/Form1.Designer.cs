@@ -1148,7 +1148,6 @@ namespace MusicLibUtility
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Panel panel2;
@@ -1215,6 +1214,7 @@ namespace MusicLibUtility
         private System.Windows.Forms.PictureBox pictureBox20;
         private BackgroundWorker backgroundWorker8;
         private BackgroundWorker backgroundWorker9;
+        public Label label7;
     }
 }
 

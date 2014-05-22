@@ -222,19 +222,19 @@ namespace MusicLibUtility
         {
             string filepath = label4.Text;
             DirectoryInfo rootDir = new DirectoryInfo(filepath);
+            label7.Text = rootDir.FullName;
             Control.CheckForIllegalCrossThreadCalls = false;
             backgroundWorker2.Dispose();
             backgroundWorker3.Dispose();
             backgroundWorker1.WorkerSupportsCancellation = true;
             label6.Text = null;
-            label7.Text = null;
-
             System.Diagnostics.Debug.WriteLine(Directory.GetDirectories(filepath)+ " ");
             System.Diagnostics.Debug.WriteLine(rootDir + " ");
             string[] allfiles = null;
             string[] Dirs = null;
             RecursiveFileSearch rfs = new RecursiveFileSearch();
-            rfs.WalkDirectoryTree(rootDir);
+            rfs.FullDirList(rootDir,"*");
+//            rfs.dirInfo;
             foreach (string s in rfs.log)
             {
                 Console.WriteLine(s);
@@ -253,14 +253,14 @@ namespace MusicLibUtility
 //            catch (UnauthorizedAccessException) { };
             //foreach (string filename in allfiles) { System.Diagnostics.Debug.WriteLine(filename + " "); }
             string extensionstring = extensions.ToString();
-            System.IO.File.WriteAllLines(@filepath + "\\testfiles.txt", allfiles);
+//           System.IO.File.WriteAllLines(@filepath + "\\testfiles.txt", allfiles);
             foreach (KeyValuePair<string, string> ext in extensions)
             {
                 System.IO.File.WriteAllText(@filepath + "\\testext.txt", ext.ToString());
                 foreach (FileInfo file in filelist)
                 {
                     FileInfo fi = file;
-                    label8.Text = Path.GetFileName(file.FullName);
+                    label8.Text = Path.GetFileName(file.FullName+file.Name);
                     if (extensions.ContainsKey(fi.Extension))
                     {
                         files.Add(fi.FullName.ToString()); label8.Text = fi.FullName;
