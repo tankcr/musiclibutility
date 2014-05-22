@@ -21,7 +21,6 @@ using System.Diagnostics;
 namespace MusicLibUtility
 {
     
-
     public partial class Form1 : Form
     {
         private BackgroundWorker worker = new BackgroundWorker();
@@ -41,7 +40,8 @@ namespace MusicLibUtility
         string currDirPath;
         DataTable MLTable;
         DataTable badTable;
-        List<string> extensions = new List<string>();
+        //List<string> extensions = new List<string>();
+        
         public Form1()
         {
             InitializeComponent();
@@ -95,11 +95,6 @@ namespace MusicLibUtility
             catch { }
             var myiTunes = new iTunesAppClass();
             this.pictureBox1.Image = Properties.Resources.skinitunes;
-            //string statestring = null;
-            //int state = ((int)itunes.PlayerState);
-            //if (state < 1) { statestring = "Stopped"; };
-            //if (state == 1) { statestring = "Playing"; };
-
             itunesApp.OnPlayerPlayEvent += new _IiTunesEvents_OnPlayerPlayEventEventHandler(itunesApp_OnPlayerPlayEvent);       
             dataGridView1.DataSource = dataTable1;
             backgroundWorker4.RunWorkerAsync();
@@ -149,11 +144,6 @@ namespace MusicLibUtility
         private void label1_Click(object sender, EventArgs e)
         {
             label1.Text = itunes.LibraryXMLPath;
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void folderBrowserDialog1_HelpRequest(object sender, EventArgs e)
@@ -209,6 +199,11 @@ namespace MusicLibUtility
             pictureBox1.Image = Properties.Resources.running;
             string filepath = label4.Text;
             DirectoryInfo rootDir = new DirectoryInfo(filepath);
+//            string[] allfiles = Directory.GetFiles(rootDir.FullName, "*.*", SearchOption.AllDirectories);
+//            foreach (string filename in allfiles) { System.Diagnostics.Debug.WriteLine(filename + " "); }
+//            string extensionstring = extensions.ToString();
+//            System.IO.File.WriteAllLines(@filepath + "\\testfiles.txt", allfiles);
+
             if (!backgroundWorker1.IsBusy)
             { backgroundWorker1.RunWorkerAsync(); }
             pictureBox3.Image = Properties.Resources.scanning;
@@ -223,79 +218,65 @@ namespace MusicLibUtility
             //this.pictureBox1.Image = Properties.Resources.skinitunes;
 
         }
-        private void pictureBox1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
+            string filepath = label4.Text;
+            DirectoryInfo rootDir = new DirectoryInfo(filepath);
             Control.CheckForIllegalCrossThreadCalls = false;
             backgroundWorker2.Dispose();
             backgroundWorker3.Dispose();
             backgroundWorker1.WorkerSupportsCancellation = true;
             label6.Text = null;
             label7.Text = null;
-            
+
+            System.Diagnostics.Debug.WriteLine(Directory.GetDirectories(filepath)+ " ");
+            System.Diagnostics.Debug.WriteLine(rootDir + " ");
+            string[] allfiles = null;
+            string[] Dirs = null;
+
+            RecursiveFileSearch.WalkDirectoryTree(rootDir);
+            Console.WriteLine("Files with restricted access:");
+            foreach (string s in log)
             {
+                Console.WriteLine(s);
+            }
+            // Keep the console window open in debug mode.
+            Console.WriteLine("Press any key");
+            Console.ReadKey();
 
-                string filepath = label4.Text;
-                DirectoryInfo rootDir = new DirectoryInfo(filepath);
+            try
+            { Dirs = Directory.GetDirectories(filepath); }
+            catch (UnauthorizedAccessException) { }
 
-                foreach (string ext in extensions)
+
+            { System.IO.File.WriteAllLines(@filepath + "\\testfiles.txt", Dirs); }
+            try
+            {
+                allfiles = Directory.GetFiles(rootDir.FullName, "*.*", SearchOption.AllDirectories);
+            }
+            catch (UnauthorizedAccessException) { };
+            //foreach (string filename in allfiles) { System.Diagnostics.Debug.WriteLine(filename + " "); }
+            string extensionstring = extensions.ToString();
+            System.IO.File.WriteAllLines(@filepath + "\\testfiles.txt", allfiles);
+            foreach (KeyValuePair<string, string> ext in extensions)
+            {
+                System.IO.File.WriteAllText(@filepath + "\\testext.txt", ext.ToString());
+                foreach (string file in allfiles)
                 {
-                    try
+                    FileInfo fi = new FileInfo(file);
+                    label8.Text = Path.GetFileName(file);
+                    if (extensions.ContainsKey(fi.Extension))
                     {
-                        filesacc = rootDir.GetFiles(ext);
-                        if (ext == "*.mp3")
-                        { label5.Text = "MP3 Audio"; }
-                        else if (ext == "*.m4a")
-                        { label5.Text = "iTunes AAC Audio"; }
-                        else if (ext == "*.m4b")
-                        { label5.Text = "iTunes Audio Book"; }
-                        else if (ext == "*.m4v")
-                        { label5.Text = "iTunes Video"; }
-                        else if (ext == "*.m4p")
-                        { label5.Text = "iTunes Protected Audio"; }
-                        else if (ext == "*.flac")
-                        { label5.Text = "Lossless Flac Audio"; }
-                        else if (ext == "*.wav")
-                        { label5.Text = "Windows Audio"; }
-                        else if (ext == "*.mp4")
-                        { label5.Text = "Mp4 Audio/Video"; }
+                        files.Add(fi.FullName.ToString()); label8.Text = fi.FullName;
+                        System.IO.File.WriteAllText("@C:\test.txt", files.ToString());
                     }
-                    catch (UnauthorizedAccessException)
-                    { }
-                    if (filesacc != null)
-                    {
-                        foreach (FileInfo fi in filesacc)
-                        { 
-                            files.Add(fi.FullName.ToString());
-                            label8.Text = fi.FullName;
-                        }
-                    }
-                    subDirs = rootDir.GetDirectories();
-                    foreach (DirectoryInfo dirInfo in subDirs)
-                    {
-                        try
-                        {
-                            foreach (string GFI in Directory.GetFiles(dirInfo.FullName, ext, SearchOption.AllDirectories))
-                            {
-                                label7.Text = Path.GetDirectoryName(GFI);
-                                label8.Text = Path.GetFileName(GFI);
-                                files.Add(GFI);
-                                label7.Text = "Directory";
-                                label8.Text = "File";
-                            }
-                        }
-                        catch (UnauthorizedAccessException) { }
-                    }
-
+                }
+                foreach (string GFI in files)
+                {
+                    label7.Text = Path.GetDirectoryName(GFI);
+                    label8.Text = Path.GetFileName(GFI);
+                    label7.Text = "Directory";
+                    label8.Text = "File";
                 }
             }
             this.pictureBox3.Image = null;
@@ -309,17 +290,11 @@ namespace MusicLibUtility
 
         }
 
-        private void label6_Click(object sender, EventArgs e)
-        {
-            label6.Text = "";
-        }
-
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
 
             pictureBox3.Image = null;     
             label8.Text = "Complete";
-            backgroundWorker1.CancelAsync();
 
         }
 
@@ -330,11 +305,6 @@ namespace MusicLibUtility
                 Process.Start(@label7.Text.ToString()); 
             }
             catch { }
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void backgroundWorker2_DoWork(object sender, DoWorkEventArgs e)
@@ -477,61 +447,12 @@ namespace MusicLibUtility
 
 
         }
-        private void pictureBox3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox3_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void button2_Click(object sender, EventArgs e)
-        {
-            
+        {         
             backgroundWorker1.CancelAsync();
         }
-        private void pictureBox5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel3_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void pictureBox7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-         private void label13_Click(object sender, EventArgs e)
-        {
-        
-        }
-        private void comboBox1_Paint(object sender, EventArgs e)
-         {
-
-         }
-        
-        
+              
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBox2.Text.ToString() == "iTunes Playlists")
@@ -591,22 +512,9 @@ namespace MusicLibUtility
             lbl_numsongs.Text = dataTable1.Rows.Count.ToString() + " Songs" + ", " + (totalfilesize / 1024.00 / 1024.00).ToString("###,### mb");
         }
 
-        private void dataGridView1_Load(object sender, DataGridViewCellEventArgs e)
-        { 
-        }
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void button3_Click(object sender, EventArgs e)
         {
             backgroundWorker8.RunWorkerAsync();
-        }
-
-        private void label13_Click_1(object sender, EventArgs e)
-        {
-
         }
 
         private void backgroundWorker4_DoWork(object sender, DoWorkEventArgs e)
@@ -626,11 +534,6 @@ namespace MusicLibUtility
         private void backgroundWorker5_DoWork(object sender, DoWorkEventArgs e)
         {
             Control.CheckForIllegalCrossThreadCalls = false;
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         private void backgroundWorker6_DoWork(object sender, DoWorkEventArgs e)
@@ -673,17 +576,6 @@ namespace MusicLibUtility
                 lbl_numsongs.Text = dataTable1.Rows.Count.ToString() + " Songs" + ", " + (totalfilesize / 1024.00 / 1024.00).ToString("###,### mb");
             }
         }
-
-        private void label12_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label18_Click(object sender, EventArgs e)
-        {
-
-        }
-
         
         private void button5_Click(object sender, EventArgs e)
         {
@@ -711,9 +603,7 @@ namespace MusicLibUtility
             try
             { label17.Text = itunes.CurrentTrack.Name; }
             catch
-            {
-                //Nothing Here! this is just so your the app doesn't blow up if iTunes is busy. instead it will just try again in 1 second
-            }
+            { }
         }
 
         private void button8_Click(object sender, EventArgs e)
@@ -724,16 +614,6 @@ namespace MusicLibUtility
         private void button9_Click(object sender, EventArgs e)
         {
             itunes.BackTrack();
-        }
-
-        private void label14_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label13_Click_2(object sender, EventArgs e)
-        {
-
         }
 
         private void pictureBox12_Click(object sender, EventArgs e)
@@ -795,15 +675,6 @@ namespace MusicLibUtility
             pictureBox8.Image = null;
             pictureBox7.Image = Properties.Resources.music16;
             pictureBox1.Image = MusicLibUtility.Properties.Resources.skinitunes;
-        }
-        private void pictureBox8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click_1(object sender, EventArgs e)
-        {
-
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
@@ -899,73 +770,46 @@ namespace MusicLibUtility
                 }
             }
         }
+        
+        Dictionary<string, string> extensions = new Dictionary<string, string>();     
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox1.Checked)
-            { extensions.Add("*.mp3"); }
-            if (checkBox1.Checked == false)
-            { extensions.Remove("*.mp3"); }
+            if (checkBox1.Checked) extensions["*.mp3"] = "MP3 Audio"; else extensions.Remove("*.mp3");
         }
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox2.Checked)
-            { extensions.Add("*.mp4"); }
-            if (checkBox2.Checked == false)
-            { extensions.Remove("*.mp4"); }
+            if (checkBox1.Checked) extensions["*.mp4"] = "MP4 Audio/Video"; else extensions.Remove("*.mp4");
         }
 
         private void checkBox3_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox3.Checked)
-            { extensions.Add("*.m4a"); }
-            if (checkBox3.Checked == false)
-            { extensions.Remove("*.m4a"); }
+            if (checkBox1.Checked) extensions["*.m4a"] = "iTunes Audio"; else extensions.Remove("*.m4a");
         }
 
         private void checkBox4_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox4.Checked)
-            { extensions.Add("*.m4v"); }
-            if (checkBox4.Checked == false)
-            { extensions.Remove("*.m4v"); }
+            if (checkBox1.Checked) extensions["*.m4v"] = "iTunes Video"; else extensions.Remove("*.m4a");
         }
 
         private void checkBox5_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox5.Checked)
-            { extensions.Add("*.m4p"); }
-            if (checkBox5.Checked == false)
-            { extensions.Remove("*.m4p"); }
+            if (checkBox1.Checked) extensions["*.m4p"] = "iTunes Protected Audio"; else extensions.Remove("*.m4p");
         }
 
         private void checkBox6_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox6.Checked)
-            { extensions.Add("*.m4b"); }
-            if (checkBox6.Checked == false)
-            { extensions.Remove("*.m4b"); }
+            if (checkBox1.Checked) extensions["*.m4b"] = "iTunes Audio Book"; else extensions.Remove("*.m4b");
         }
 
         private void checkBox7_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox7.Checked)
-            { extensions.Add("*.flac"); }
-            if (checkBox7.Checked == false)
-            { extensions.Remove("*.flac"); }
+            if (checkBox1.Checked) extensions["*.flac"] = "Lossless Audio"; else extensions.Remove("*.flac");
         }
 
         private void checkBox8_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox8.Checked)
-            { extensions.Add("*.wav"); }
-            if (checkBox8.Checked == false)
-            { extensions.Remove("*.wav"); }
-        }
-
-        private void panel7_Paint(object sender, PaintEventArgs e)
-        {
-
+            if (checkBox1.Checked) extensions["*.wav"] = "Windows Audio/Video"; else extensions.Remove("*.wav");
         }
 
         private void pictureBox20_Click(object sender, EventArgs e)
@@ -1058,4 +902,5 @@ namespace MusicLibUtility
             while (backgroundWorker8.IsBusy);
         }
     }
+
 }

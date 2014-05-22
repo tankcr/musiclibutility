@@ -331,7 +331,6 @@ namespace MusicLibUtility
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(305, 16);
             this.label6.TabIndex = 10;
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // backgroundWorker1
             // 
@@ -370,7 +369,6 @@ namespace MusicLibUtility
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(305, 16);
             this.label12.TabIndex = 17;
-            this.label12.Click += new System.EventHandler(this.label12_Click);
             // 
             // label8
             // 
@@ -384,7 +382,6 @@ namespace MusicLibUtility
             this.label8.Size = new System.Drawing.Size(280, 16);
             this.label8.TabIndex = 13;
             this.label8.Text = "Media Files";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // label7
             // 
@@ -626,7 +623,6 @@ namespace MusicLibUtility
             this.label5.Size = new System.Drawing.Size(120, 13);
             this.label5.TabIndex = 19;
             this.label5.Text = "File Type";
-            this.label5.Click += new System.EventHandler(this.label5_Click_1);
             // 
             // pictureBox11
             // 
@@ -664,7 +660,6 @@ namespace MusicLibUtility
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(290, 104);
             this.panel1.TabIndex = 14;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // pictureBox2
             // 
@@ -721,7 +716,6 @@ namespace MusicLibUtility
             this.label4.TabIndex = 4;
             this.label4.Text = "label4";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // button1
             // 
@@ -753,7 +747,6 @@ namespace MusicLibUtility
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(556, 364);
             this.dataGridView1.TabIndex = 1;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // dataSet1
             // 
@@ -804,7 +797,6 @@ namespace MusicLibUtility
             this.lbl_numsongs.Name = "lbl_numsongs";
             this.lbl_numsongs.Size = new System.Drawing.Size(158, 16);
             this.lbl_numsongs.TabIndex = 23;
-            this.lbl_numsongs.Click += new System.EventHandler(this.label13_Click_1);
             // 
             // backgroundWorker4
             // 
@@ -862,7 +854,6 @@ namespace MusicLibUtility
             this.pictureBox8.Size = new System.Drawing.Size(96, 16);
             this.pictureBox8.TabIndex = 18;
             this.pictureBox8.TabStop = false;
-            this.pictureBox8.Click += new System.EventHandler(this.pictureBox8_Click);
             // 
             // pictureBox5
             // 
@@ -875,7 +866,6 @@ namespace MusicLibUtility
             this.pictureBox5.Size = new System.Drawing.Size(96, 16);
             this.pictureBox5.TabIndex = 15;
             this.pictureBox5.TabStop = false;
-            this.pictureBox5.Click += new System.EventHandler(this.pictureBox5_Click);
             // 
             // pictureBox3
             // 
@@ -887,7 +877,6 @@ namespace MusicLibUtility
             this.pictureBox3.Size = new System.Drawing.Size(96, 16);
             this.pictureBox3.TabIndex = 12;
             this.pictureBox3.TabStop = false;
-            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click_1);
             // 
             // pictureBox4
             // 
@@ -906,7 +895,6 @@ namespace MusicLibUtility
             this.pictureBox7.Size = new System.Drawing.Size(16, 16);
             this.pictureBox7.TabIndex = 19;
             this.pictureBox7.TabStop = false;
-            this.pictureBox7.Click += new System.EventHandler(this.pictureBox7_Click);
             // 
             // pictureBox6
             // 
@@ -927,7 +915,6 @@ namespace MusicLibUtility
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 11;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click_1);
             // 
             // label14
             // 
@@ -942,7 +929,6 @@ namespace MusicLibUtility
             this.label14.Size = new System.Drawing.Size(260, 16);
             this.label14.TabIndex = 25;
             this.label14.Text = "Artist";
-            this.label14.Click += new System.EventHandler(this.label14_Click);
             // 
             // panel3
             // 
@@ -1052,7 +1038,6 @@ namespace MusicLibUtility
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(140, 140);
             this.panel7.TabIndex = 29;
-            this.panel7.Paint += new System.Windows.Forms.PaintEventHandler(this.panel7_Paint);
             // 
             // pictureBox13
             // 
