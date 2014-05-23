@@ -767,37 +767,37 @@ namespace MusicLibUtility
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox1.Checked) extensions["*.mp4"] = "MP4 Audio/Video"; else extensions.Remove("*.mp4");
+            if (checkBox1.Checked) extensions[".mp4"] = "MP4 Audio/Video"; else extensions.Remove(".mp4");
         }
 
         private void checkBox3_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox1.Checked) extensions["*.m4a"] = "iTunes Audio"; else extensions.Remove("*.m4a");
+            if (checkBox1.Checked) extensions[".m4a"] = "iTunes Audio"; else extensions.Remove(".m4a");
         }
 
         private void checkBox4_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox1.Checked) extensions["*.m4v"] = "iTunes Video"; else extensions.Remove("*.m4a");
+            if (checkBox1.Checked) extensions[".m4v"] = "iTunes Video"; else extensions.Remove(".m4a");
         }
 
         private void checkBox5_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox1.Checked) extensions["*.m4p"] = "iTunes Protected Audio"; else extensions.Remove("*.m4p");
+            if (checkBox1.Checked) extensions[".m4p"] = "iTunes Protected Audio"; else extensions.Remove(".m4p");
         }
 
         private void checkBox6_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox1.Checked) extensions["*.m4b"] = "iTunes Audio Book"; else extensions.Remove("*.m4b");
+            if (checkBox1.Checked) extensions[".m4b"] = "iTunes Audio Book"; else extensions.Remove(".m4b");
         }
 
         private void checkBox7_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox1.Checked) extensions["*.flac"] = "Lossless Audio"; else extensions.Remove("*.flac");
+            if (checkBox1.Checked) extensions[".flac"] = "Lossless Audio"; else extensions.Remove(".flac");
         }
 
         private void checkBox8_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox1.Checked) extensions["*.wav"] = "Windows Audio/Video"; else extensions.Remove("*.wav");
+            if (checkBox1.Checked) extensions[".wav"] = "Windows Audio/Video"; else extensions.Remove(".wav");
         }
 
         private void pictureBox20_Click(object sender, EventArgs e)
