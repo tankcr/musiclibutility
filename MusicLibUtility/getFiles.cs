@@ -49,7 +49,7 @@ namespace MusicLibUtility
                     // want to open, delete or modify the file, then 
                     // a try-catch block is required here to handle the case 
                     // where the file has been deleted since the call to TraverseTree().
-                Console.WriteLine(fi.FullName);
+               Console.WriteLine(fi.FullName);
                  Files.Add(fi);
             }
 
@@ -60,6 +60,7 @@ namespace MusicLibUtility
              {
                     // Resursive call for each subdirectory.
 //                 DisplayCurrentFile(dirInfo);
+                 
                  files.AddRange(WalkDirectoryTree(dirInfo));
                     
              }

@@ -45,6 +45,9 @@ namespace MusicLibUtility
         public Form1()
         {
             InitializeComponent();
+            label6.Text = "Directory Scanner Status Messages";
+            label11.Text = "Bad Media File Scanner Status Messages";
+            label15.Text = "iTunes Media Library Scanner Status Messages";
             try
             {label17.Text = itunes.CurrentTrack.Name;}
             catch
@@ -56,23 +59,13 @@ namespace MusicLibUtility
             catch
             { }
             try
-            { 
-                if (itunes.CurrentTrack.Kind == ITTrackKind.ITTrackKindFile)
-                {
-                    IITFileOrCDTrack file = (IITFileOrCDTrack)itunes.CurrentTrack;
-                    if (file.Location != null)
-                    {
-                        FileInfo fi = new FileInfo(file.Location);
-                        if (fi.Exists)
-                        {
-                            currfilePath = file.Location;
-                            currDirPath = fi.Directory.ToString();
-                        }
-                        else
-                            currfilePath = "not found " + file.Location;
-                    }
-                }
+            {
+                IITFileOrCDTrack file = (IITFileOrCDTrack)itunes.CurrentTrack;
+                Currtracks currtrack = Currtracks.GetiTunestrack.GetTrackInfo();
+                currfilePath = currtrack.currTrack.trackPath;
                 label13.Text = currfilePath;
+                currDirPath = currtrack.currTrack.dirPath;
+
             }
             catch{}
             try 
@@ -101,29 +94,23 @@ namespace MusicLibUtility
 
         }
 
+        
         private void itunesApp_OnPlayerPlayEvent(object iTrack)
         {
+            Currtracks currtrack = Currtracks.GetiTunestrack.GetTrackInfo();
             IITTrack currentTrack = (IITTrack)iTrack;
-            string playerstate = itunes.PlayerState.ToString();
-            string trackName = currentTrack.Name;
-            string artist = currentTrack.Artist;
-            string album = currentTrack.Album;
+            string playerstate = currtrack.currTrack.playerstate.ToString();
+            string trackName = currtrack.currTrack.trackName;
+            string artist = currtrack.currTrack.artist;
+            string album = currtrack.currTrack.album;
             label17.Text = trackName;
             label14.Text = artist;
             if (itunes.CurrentTrack.Kind == ITTrackKind.ITTrackKindFile)
             {
-                IITFileOrCDTrack file = (IITFileOrCDTrack)itunes.CurrentTrack;
-                if (file.Location != null)
-                {
-                    FileInfo fi = new FileInfo(file.Location);
-                    if (fi.Exists)
-                    {
-                        currfilePath = file.Location;
-                        currDirPath = fi.Directory.ToString();
-                    }
-                    else
-                        currfilePath = "not found " + file.Location;
-                }
+                currtrack = Currtracks.GetiTunestrack.GetTrackInfo();
+                currfilePath = currtrack.currTrack.trackPath;
+                currDirPath = currtrack.currTrack.dirPath;
+                label13.Text = currfilePath;
             }
             label13.Text = currfilePath;
             try
@@ -503,8 +490,8 @@ namespace MusicLibUtility
         private void button3_Click(object sender, EventArgs e)
         {
             backgroundWorker8.RunWorkerAsync();
+            backgroundWorker10.RunWorkerAsync();
         }
-
         private void backgroundWorker4_DoWork(object sender, DoWorkEventArgs e)
         {
             Control.CheckForIllegalCrossThreadCalls = false;
@@ -889,6 +876,43 @@ namespace MusicLibUtility
             do { Thread.Sleep(800); }
             while (backgroundWorker8.IsBusy);
         }
+
+        private void backgroundWorker10_DoWork(object sender, DoWorkEventArgs e)
+        {
+            pictureBox1.Image = Properties.Resources.running;
+            pictureBox21.Image = Properties.Resources.scanning;
+            do { Thread.Sleep(800); }
+            while (backgroundWorker8.IsBusy);
+            pictureBox1.Image = Properties.Resources.skinitunes;
+            pictureBox21.Image = null;
+            
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label15_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Devices mydevice;
+            mydevice = GetDevices.GetDeviceData();
+        }
+
     }
 
 }

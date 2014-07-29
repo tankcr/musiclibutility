@@ -116,12 +116,17 @@ namespace MusicLibUtility
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.label17 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.panel10 = new System.Windows.Forms.Panel();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.panel8 = new System.Windows.Forms.Panel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox21 = new System.Windows.Forms.PictureBox();
+            this.pictureBox22 = new System.Windows.Forms.PictureBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label14 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -137,6 +142,8 @@ namespace MusicLibUtility
             this.pictureBox13 = new System.Windows.Forms.PictureBox();
             this.backgroundWorker8 = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorker9 = new System.ComponentModel.BackgroundWorker();
+            this.backgroundWorker10 = new System.ComponentModel.BackgroundWorker();
+            this.button6 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).BeginInit();
@@ -158,12 +165,16 @@ namespace MusicLibUtility
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable1)).BeginInit();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+            this.panel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox21)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox22)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox20)).BeginInit();
@@ -285,7 +296,7 @@ namespace MusicLibUtility
             // 
             // button3
             // 
-            this.button3.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.button3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.button3.Location = new System.Drawing.Point(120, 73);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
@@ -312,7 +323,7 @@ namespace MusicLibUtility
             | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBox1.Enabled = false;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(739, 194);
+            this.comboBox1.Location = new System.Drawing.Point(739, 217);
             this.comboBox1.MaximumSize = new System.Drawing.Size(175, 0);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(159, 21);
@@ -326,11 +337,12 @@ namespace MusicLibUtility
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label6.Location = new System.Drawing.Point(26, 16);
+            this.label6.Location = new System.Drawing.Point(24, 1);
             this.label6.MinimumSize = new System.Drawing.Size(305, 16);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(305, 16);
             this.label6.TabIndex = 10;
+            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // backgroundWorker1
             // 
@@ -352,7 +364,7 @@ namespace MusicLibUtility
             this.label11.AutoSize = true;
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label11.Location = new System.Drawing.Point(26, 39);
+            this.label11.Location = new System.Drawing.Point(25, 1);
             this.label11.MinimumSize = new System.Drawing.Size(305, 16);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(305, 16);
@@ -369,6 +381,7 @@ namespace MusicLibUtility
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(305, 16);
             this.label12.TabIndex = 17;
+            this.label12.Click += new System.EventHandler(this.label12_Click);
             // 
             // label8
             // 
@@ -743,9 +756,9 @@ namespace MusicLibUtility
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(342, 238);
+            this.dataGridView1.Location = new System.Drawing.Point(342, 260);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(556, 364);
+            this.dataGridView1.Size = new System.Drawing.Size(556, 342);
             this.dataGridView1.TabIndex = 1;
             // 
             // dataSet1
@@ -791,7 +804,7 @@ namespace MusicLibUtility
             this.lbl_numsongs.AutoSize = true;
             this.lbl_numsongs.BackColor = System.Drawing.SystemColors.ControlLight;
             this.lbl_numsongs.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lbl_numsongs.Location = new System.Drawing.Point(740, 218);
+            this.lbl_numsongs.Location = new System.Drawing.Point(740, 241);
             this.lbl_numsongs.MaximumSize = new System.Drawing.Size(175, 16);
             this.lbl_numsongs.MinimumSize = new System.Drawing.Size(158, 16);
             this.lbl_numsongs.Name = "lbl_numsongs";
@@ -827,21 +840,117 @@ namespace MusicLibUtility
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.panel10);
+            this.groupBox3.Controls.Add(this.panel8);
+            this.groupBox3.Controls.Add(this.pictureBox21);
+            this.groupBox3.Controls.Add(this.pictureBox22);
+            this.groupBox3.Controls.Add(this.label15);
             this.groupBox3.Controls.Add(this.pictureBox8);
-            this.groupBox3.Controls.Add(this.pictureBox5);
-            this.groupBox3.Controls.Add(this.pictureBox3);
-            this.groupBox3.Controls.Add(this.label6);
-            this.groupBox3.Controls.Add(this.pictureBox4);
             this.groupBox3.Controls.Add(this.pictureBox7);
-            this.groupBox3.Controls.Add(this.label11);
-            this.groupBox3.Controls.Add(this.pictureBox6);
             this.groupBox3.Controls.Add(this.label12);
             this.groupBox3.Location = new System.Drawing.Point(343, 142);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(391, 90);
+            this.groupBox3.Size = new System.Drawing.Size(391, 117);
             this.groupBox3.TabIndex = 24;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Running Status";
+            // 
+            // panel10
+            // 
+            this.panel10.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel10.Controls.Add(this.pictureBox5);
+            this.panel10.Controls.Add(this.pictureBox6);
+            this.panel10.Controls.Add(this.label11);
+            this.panel10.Location = new System.Drawing.Point(0, 41);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(389, 21);
+            this.panel10.TabIndex = 24;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox5.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBox5.ImageLocation = "";
+            this.pictureBox5.Location = new System.Drawing.Point(287, 0);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(96, 16);
+            this.pictureBox5.TabIndex = 15;
+            this.pictureBox5.TabStop = false;
+            this.pictureBox5.Click += new System.EventHandler(this.pictureBox5_Click);
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox6.Location = new System.Drawing.Point(3, 0);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(16, 16);
+            this.pictureBox6.TabIndex = 16;
+            this.pictureBox6.TabStop = false;
+            // 
+            // panel8
+            // 
+            this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel8.Controls.Add(this.pictureBox3);
+            this.panel8.Controls.Add(this.label6);
+            this.panel8.Controls.Add(this.pictureBox4);
+            this.panel8.Location = new System.Drawing.Point(0, 15);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(389, 20);
+            this.panel8.TabIndex = 23;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBox3.ImageLocation = "";
+            this.pictureBox3.Location = new System.Drawing.Point(287, 0);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(96, 16);
+            this.pictureBox3.TabIndex = 12;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox4.Location = new System.Drawing.Point(2, 0);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(16, 16);
+            this.pictureBox4.TabIndex = 13;
+            this.pictureBox4.TabStop = false;
+            // 
+            // pictureBox21
+            // 
+            this.pictureBox21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox21.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox21.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBox21.ImageLocation = "";
+            this.pictureBox21.Location = new System.Drawing.Point(281, 90);
+            this.pictureBox21.Name = "pictureBox21";
+            this.pictureBox21.Size = new System.Drawing.Size(96, 16);
+            this.pictureBox21.TabIndex = 21;
+            this.pictureBox21.TabStop = false;
+            // 
+            // pictureBox22
+            // 
+            this.pictureBox22.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox22.Location = new System.Drawing.Point(4, 90);
+            this.pictureBox22.Name = "pictureBox22";
+            this.pictureBox22.Size = new System.Drawing.Size(16, 16);
+            this.pictureBox22.TabIndex = 22;
+            this.pictureBox22.TabStop = false;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.BackColor = System.Drawing.Color.Transparent;
+            this.label15.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.label15.Location = new System.Drawing.Point(26, 90);
+            this.label15.MinimumSize = new System.Drawing.Size(305, 16);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(305, 16);
+            this.label15.TabIndex = 20;
+            this.label15.Click += new System.EventHandler(this.label15_Click);
             // 
             // pictureBox8
             // 
@@ -855,38 +964,6 @@ namespace MusicLibUtility
             this.pictureBox8.TabIndex = 18;
             this.pictureBox8.TabStop = false;
             // 
-            // pictureBox5
-            // 
-            this.pictureBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox5.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBox5.ImageLocation = "";
-            this.pictureBox5.Location = new System.Drawing.Point(281, 39);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(96, 16);
-            this.pictureBox5.TabIndex = 15;
-            this.pictureBox5.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBox3.ImageLocation = "";
-            this.pictureBox3.Location = new System.Drawing.Point(281, 16);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(96, 16);
-            this.pictureBox3.TabIndex = 12;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox4.Location = new System.Drawing.Point(4, 16);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(16, 16);
-            this.pictureBox4.TabIndex = 13;
-            this.pictureBox4.TabStop = false;
-            // 
             // pictureBox7
             // 
             this.pictureBox7.BackColor = System.Drawing.Color.Transparent;
@@ -895,15 +972,6 @@ namespace MusicLibUtility
             this.pictureBox7.Size = new System.Drawing.Size(16, 16);
             this.pictureBox7.TabIndex = 19;
             this.pictureBox7.TabStop = false;
-            // 
-            // pictureBox6
-            // 
-            this.pictureBox6.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox6.Location = new System.Drawing.Point(4, 39);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(16, 16);
-            this.pictureBox6.TabIndex = 16;
-            this.pictureBox6.TabStop = false;
             // 
             // pictureBox1
             // 
@@ -1013,7 +1081,7 @@ namespace MusicLibUtility
             "iTunes Database Backup",
             "iTunes Playlists",
             "Media Library Database"});
-            this.comboBox2.Location = new System.Drawing.Point(739, 167);
+            this.comboBox2.Location = new System.Drawing.Point(739, 190);
             this.comboBox2.MaximumSize = new System.Drawing.Size(175, 0);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(159, 21);
@@ -1058,6 +1126,20 @@ namespace MusicLibUtility
             // 
             this.backgroundWorker9.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker9_DoWork);
             // 
+            // backgroundWorker10
+            // 
+            this.backgroundWorker10.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker10_DoWork);
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(583, 7);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(91, 23);
+            this.button6.TabIndex = 31;
+            this.button6.Text = "Connect Phone";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1066,6 +1148,7 @@ namespace MusicLibUtility
             this.BackgroundImage = global::MusicLibUtility.Properties.Resources.bkgrnd;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(910, 627);
+            this.Controls.Add(this.button6);
             this.Controls.Add(this.pictureBox13);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel3);
@@ -1107,12 +1190,18 @@ namespace MusicLibUtility
             ((System.ComponentModel.ISupportInitialize)(this.dataTable1)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+            this.panel10.ResumeLayout(false);
+            this.panel10.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox21)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox22)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
@@ -1215,6 +1304,13 @@ namespace MusicLibUtility
         private BackgroundWorker backgroundWorker8;
         private BackgroundWorker backgroundWorker9;
         public Label label7;
+        private BackgroundWorker backgroundWorker10;
+        private PictureBox pictureBox21;
+        private PictureBox pictureBox22;
+        private Label label15;
+        private Panel panel8;
+        private Panel panel10;
+        private Button button6;
     }
 }
 
