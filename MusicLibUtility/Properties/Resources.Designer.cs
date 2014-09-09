@@ -73,6 +73,16 @@ namespace MusicLibUtility.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap androidconnect {
+            get {
+                object obj = ResourceManager.GetObject("androidconnect", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap artback {
             get {
                 object obj = ResourceManager.GetObject("artback", resourceCulture);

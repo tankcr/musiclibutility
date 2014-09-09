@@ -144,6 +144,7 @@ namespace MusicLibUtility
             this.backgroundWorker9 = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorker10 = new System.ComponentModel.BackgroundWorker();
             this.button6 = new System.Windows.Forms.Button();
+            this.panel_connect = new System.Windows.Forms.Panel();
             this.groupBox1.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).BeginInit();
@@ -1132,13 +1133,21 @@ namespace MusicLibUtility
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(583, 7);
+            this.button6.Location = new System.Drawing.Point(569, 8);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(91, 23);
+            this.button6.Size = new System.Drawing.Size(112, 23);
             this.button6.TabIndex = 31;
             this.button6.Text = "Connect Phone";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // panel_connect
+            // 
+            this.panel_connect.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.panel_connect.Location = new System.Drawing.Point(569, 37);
+            this.panel_connect.Name = "panel_connect";
+            this.panel_connect.Size = new System.Drawing.Size(112, 86);
+            this.panel_connect.TabIndex = 32;
             // 
             // Form1
             // 
@@ -1148,6 +1157,7 @@ namespace MusicLibUtility
             this.BackgroundImage = global::MusicLibUtility.Properties.Resources.bkgrnd;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(910, 627);
+            this.Controls.Add(this.panel_connect);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.pictureBox13);
             this.Controls.Add(this.panel7);
@@ -1311,6 +1321,7 @@ namespace MusicLibUtility
         private Panel panel8;
         private Panel panel10;
         private Button button6;
+        private Panel panel_connect;
     }
 }
 

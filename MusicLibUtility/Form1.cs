@@ -584,11 +584,13 @@ namespace MusicLibUtility
         private void button8_Click(object sender, EventArgs e)
         {
             itunes.NextTrack();
+            itunesApp.OnPlayerPlayEvent += new _IiTunesEvents_OnPlayerPlayEventEventHandler(itunesApp_OnPlayerPlayEvent);
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
             itunes.BackTrack();
+            itunesApp.OnPlayerPlayEvent += new _IiTunesEvents_OnPlayerPlayEventEventHandler(itunesApp_OnPlayerPlayEvent);
         }
 
         private void pictureBox12_Click(object sender, EventArgs e)
@@ -911,6 +913,8 @@ namespace MusicLibUtility
         {
             Devices mydevice;
             mydevice = GetDevices.GetDeviceData();
+            if(mydevice.TableData != null)
+            { panel_connect.BackgroundImage = MusicLibUtility.Properties.Resources.androidconnect; }
         }
 
     }
